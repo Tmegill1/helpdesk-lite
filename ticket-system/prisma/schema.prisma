@@ -19,6 +19,7 @@ model User {
   password String
   role     String
   tickets  Ticket[]
+  audits   Audit[]
 }
 
 model Ticket {
@@ -30,4 +31,15 @@ model Ticket {
   createdAt DateTime @default(now())
   userId    Int
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Audit {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  action     String
+  entityType String
+  entityId   Int?
+  details    String?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
 }

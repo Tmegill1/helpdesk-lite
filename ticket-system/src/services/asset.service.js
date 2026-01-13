@@ -1,5 +1,5 @@
 const assetRepo = require("../repositories/asset.repo");
-const assetNumber = require("../utils/assetNumber");
+//const assetNumber = require("../utils/assetNumber");
 
 async function createAsset({name, description, category, location, status}) {
 

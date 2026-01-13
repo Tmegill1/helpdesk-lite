@@ -1,16 +1,12 @@
-const ReportsController = require("./reports.service");
+const reportService = require("../services/report.service");
 
-async function createReport(req, res, next){
-    try{
-        const reports = await reportService.createReport({
-            ...req.body,
-        })
-        res.status(201).json(asset);
-    }
-    catch(err){
+async function getReports(req, res, next) {
+    try {
+        const reports = await reportService.getReports(req.query);
+        res.status(200).json(reports);
+    } catch (err) {
         next(err);
     }
 }
 
 module.exports = { getReports };
-            

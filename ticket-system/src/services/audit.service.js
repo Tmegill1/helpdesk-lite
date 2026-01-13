@@ -1,2 +1,15 @@
 const auditRepo = require("../repositories/audit.repo");
-const auditNumber = require("../utils/ticketNumber");
+
+async function createAudit({userId, action, entityType, entityId, details}) {
+    const audit = await auditRepo.createAudit({
+        userId,
+        action,
+        entityType,
+        entityId,
+        details: details ?? null,
+    });
+
+    return audit;
+}
+
+module.exports = { createAudit };
